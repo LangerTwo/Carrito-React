@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Layout from '../Components/layout'
 import Card from '../Components/Card'
+import ProductDetail from '../Components/ProductDetail'
 import { data } from 'autoprefixer' 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
           ))
         }
       </div>
+      <ProductDetail />
     </Layout>
   )
 }

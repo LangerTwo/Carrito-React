@@ -66,7 +66,7 @@ const Navbar = () => {
             </NavLink>
         </li>
         <li className="flex gap-2 items-center">
-            <BsCartPlusFill /> {context.count}
+            <BsCartPlusFill className="w-5 h-5"/> {context.count}
         </li>
       </ul>
     </nav>
