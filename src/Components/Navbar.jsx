@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { BsCartPlusFill } from "react-icons/bs";
+import CartContext from "../Context/CartContext";
 
 const Navbar = () => {
+    const context = useContext(CartContext)
     const activeStyle = 'underline underline-offset-4'
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
@@ -61,8 +65,8 @@ const Navbar = () => {
                 Sing In
             </NavLink>
         </li>
-        <li>
-            🛒 0
+        <li className="flex gap-2 items-center">
+            <BsCartPlusFill /> {context.count}
         </li>
       </ul>
     </nav>
