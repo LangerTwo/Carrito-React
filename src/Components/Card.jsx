@@ -18,7 +18,7 @@ const Card = (data) => {
     context.setCartProducts([...context.cartProducts, productData])
     context.closeProductDetail()
     context.openSideMenu()
-    console.log('Cart: ', context.cartProducts)
+    // console.log('Cart: ', context.cartProducts)
   }
 
   return (
