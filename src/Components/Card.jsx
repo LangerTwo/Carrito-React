@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import CartContext from '../Context/CartContext'
-import { BsPlus } from "react-icons/bs";
+import { BsPlus, BsCheckLg  } from "react-icons/bs";
 // import victini from '/victini.png'
 
 const Card = (data) => {
@@ -21,6 +21,27 @@ const Card = (data) => {
     // console.log('Cart: ', context.cartProducts)
   }
 
+  const rederIcon = (id) => {
+    const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
+    if (isInCart) {
+      return (
+        <div className='absolute top-0 right-0 flex justify-center items-center 
+            bg-black text-white w-6 h-6 rounded-full m-2 p-1'>
+          <BsCheckLg />
+        </div>
+      )
+    } else {
+      return (
+        <div 
+            className='absolute top-0 right-0 flex justify-center items-center 
+            bg-white w-6 h-6 rounded-full m-2 p-1' 
+            onClick={(event) => addProductsToCart(event, data.data)}>
+          <BsPlus />
+        </div>
+      )
+    }
+  }
+
   return (
     <div 
       className='bg-white cursor-pointer w-56 h-60 rounded-lg'
@@ -31,12 +52,7 @@ const Card = (data) => {
             {data.data.category.name}
         </span>
         <img src={data.data.images[0]} alt={data.data.title} className='w-full h-full object-cover rounded-lg bg-red-500'/>
-        <div 
-          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1' 
-          onClick={(event) => addProductsToCart(event, data.data)}
-        >
-            <BsPlus />
-        </div>
+        {rederIcon(data.data.id)}
       </figure>
       <p className='flex justify-between'>
         <span className='text-sm font-light'>
