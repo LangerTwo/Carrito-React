@@ -2,6 +2,12 @@ import { BsX } from "react-icons/bs";
 
 const OrderCard = (props) => {
     const { id, title, imageUrl, price, handleDelete } = props
+    let renderBsX
+    if (handleDelete) {
+        renderBsX = <div className="bg-red-500 rounded-full cursor-pointer">
+                        <BsX onClick={() => handleDelete(id)} className="text-2xl text-white"/>
+                    </div>
+    }
   return (
     <div className='flex justify-between items-center px-2 mb-2'>
         <div className="flex items-center gap-2">
@@ -12,9 +18,7 @@ const OrderCard = (props) => {
         </div>
         <div className="flex items-center gap-2">
             <p className="text-lg font-medium">{price}</p>
-            <div className="bg-red-500 rounded-full cursor-pointer">
-                <BsX onClick={() => handleDelete(id)} className="text-2xl text-white"/>
-            </div>
+            {renderBsX}
         </div>
     </div>
   )
