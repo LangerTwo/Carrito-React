@@ -4,7 +4,7 @@ import CartContext from "../Context/CartContext";
 
 const ProductDetail = () => {
   const context = useContext(CartContext)
-  console.log('Product To Show: ', context.productToShow)
+  // console.log('Product To Show: ', context.productToShow)
 
   return (
     <aside className={`${context.isPDetailOpen ? 'flex' : 'hidden'} w-[360px] h-[calc(100vh-80px)] flex-col fixed right-0 border border-black rounded-lg bg-white`}>
