@@ -1,23 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
 import Layout from '../Components/layout'
 import Card from '../Components/Card'
 import ProductDetail from '../Components/ProductDetail'
-import { data } from 'autoprefixer' 
+import CartContext from '../Context/CartContext'
+
 
 const Home = () => {
-  const [items, setItems] = useState(null)
-  useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
-      .then(response => response.json())
-      .then(data => setItems(data))
-  }, [])
+  const context = useContext(CartContext)
 
   return (
     <Layout>
       Home
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {
-          items?.map(item => (
+          context.items?.map(item => (
             <Card key={item.id} data={item}/>
           ))
         }

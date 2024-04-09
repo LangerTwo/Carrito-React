@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const CartContext = createContext()
 
@@ -25,6 +25,15 @@ export const CartProvider = ({children}) => {
   // Shopping Cart - Order
   const [order, setOrder] = useState([])
 
+  // Get products
+  const [items, setItems] = useState(null)
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/products')
+      .then(response => response.json())
+      .then(data => setItems(data))
+  }, [])
+
+
   return (
     <CartContext.Provider value={{
       count,
@@ -41,6 +50,8 @@ export const CartProvider = ({children}) => {
       isSideMenuOpen,
       order,
       setOrder,
+      items,
+      setItems,
     }}>
       {children}
     </CartContext.Provider>
